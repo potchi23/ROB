@@ -11,6 +11,15 @@
     [nodo] -> [nodo, peso] -> ... ->
 
     Los nodos y el peso deben de ser de tipo entero.
+
+
+    Entrada de prueba:
+        - 1 1 1 2 1 3 1 4 2 1 2 3 2 1 3 4 2 2 4 2 2 3 4 1
+
+            1 ····· 2
+            ·       ·
+            ·       ·
+            3 ····· 4
 */
 #include "grafo.h"
 #include <iostream>
@@ -27,7 +36,6 @@ int main(){
     cout << "5. Mostrar el camino más corto de origen a destino" << endl;
     cout << "0. Salir" << endl << endl;
 
-
     do{
         cout << "> Seleccione opción: " << endl;
         cin >> opcion;
@@ -36,14 +44,13 @@ int main(){
         if(opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5 && opcion != 6) cout << "Opción no válida" << endl;
         else{
             string dummy;
-            Lista<int> l;
             bool visitado[g.numNodos()];
             int origen, destino;
             
             switch(opcion){
                 case 1 :
                     int v;
-                    cout << "> INSERTAR NODO: " << endl;
+                    cout << "> INSERTAR NODO " << endl;
                     cout << "> Pon un valor al nodo: " << endl;
                     cin >> v;
                     try{
@@ -61,7 +68,7 @@ int main(){
                 case 2 : 
                     if(g.numNodos() >= 2){
                         int v1,v2, peso;
-                        cout << "> INSERTAR ARISTA: " << endl;
+                        cout << "> INSERTAR ARISTA " << endl;
                         cout << "> Elige dos nodos existentes y asígnales un peso separados por un espacio: " << endl;
                         cout << "> Formato: N1 N2 PESO" << endl;
                         cin >> v1 >> v2 >> peso;
@@ -88,7 +95,7 @@ int main(){
                     break;
 
                 case 3 : 
-                    cout << "> REPRESENTAR GRAFO: " << endl;
+                    cout << "> REPRESENTAR GRAFO " << endl;
 
                     try{
                         g.representa();
@@ -101,17 +108,17 @@ int main(){
                     }
                     break;
                 case 4:
-                    cout << "> BUSCAR TODOS LOS CAMINOS DE ORIGEN A DESTINO: " << endl;
+                    cout << "> BUSCAR TODOS LOS CAMINOS DE ORIGEN A DESTINO " << endl;
                     cout << "> Introduce origen y destino separados por un espacio:" << endl;
                     cin >> origen >> destino;
                    
                     for(int i = 0; i < g.numNodos(); i++) visitado[i] = false;
                     
-                    g.muestraCaminos(origen, destino, l, visitado);
+                    g.muestraCaminos(origen, destino);
                     cout << "----------------------------------" << endl;
                     break;
                 case 5 :
-                    cout << "> BUSCAR EL CAMINO MAS CORTO DE ORIGEN A DESTINO: " << endl;
+                    cout << "> BUSCAR EL CAMINO MAS CORTO DE ORIGEN A DESTINO " << endl;
                     cout << "> Introduce origen y destino separados por un espacio:" << endl;
                     cin >> origen >> destino;
 

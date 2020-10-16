@@ -23,7 +23,9 @@ class Grafo{
         DiccionarioHash<T, Lista<T>> nodos;
         unsigned int _nNodos;
         unsigned int _nAristas;
-        void recorreLista(const T &ant, const T &origen, const T &act, const T &destino, Lista<T> &lista, bool flags[], int &n) const;
+        void recorreLista(const T &ant, const T &origen, const T &act, const T &destino, bool flags[], int &n);
+        
+        Lista<T> d;
 
     public: 
         Grafo(): _nNodos(0), _nAristas(0){};
@@ -32,7 +34,7 @@ class Grafo{
         void uneNodos(const T &nodo1, const T &nodo2, const int &peso);
         void representa() const;
         unsigned int numNodos() const;
-        void muestraCaminos(const T &origen, const T&destino, Lista<int> &lista, bool flags[]) const;
+        void muestraCaminos(const T &origen, const T&destino);
         void dijkstra(const T &origen, const T&destino) const;
 };
 

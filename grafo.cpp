@@ -23,12 +23,12 @@ using namespace std;
         //Lista<int>::ConstIterator lIt2 = it2.valor().cbegin();
 
 
-        if(it1.valor().longitud() != 0){
+       /* if(it1.valor().longitud() != 0){
             while(lIt1.elem() != nodo2 && lIt1 != it1.valor().cend()) 
                 lIt1.next();
 
             if(lIt1.elem() == nodo2) throw EAristaExistente();
-        }
+        }*/
 
         it1.valor().pon_final(nodo2, peso);
         it2.valor().pon_final(nodo1, peso);
@@ -61,29 +61,30 @@ using namespace std;
         return _nNodos;
     }
 
+    // 1 1 1 2 1 3 1 4 2 1 2 3 2 1 3 4 2 2 4 2 2 3 4 1 //secuencia para generar automaticamente un grafo de prueba
+
     template<>
-    void Grafo<int>::recorreLista(const int &ant, const int &origen, const int &act, const int &destino, Lista<int> &lista, bool visitado[], int &n) const{
+    void Grafo<int>::recorreLista(const int &ant, const int &origen, const int &act, const int &destino, bool visitado[], int &n) {
         DiccionarioHash<int,Lista<int>>::ConstIterator nodo = nodos.cbusca(act);
         Lista<int>::ConstIterator itO = nodo.valor().cbegin();
         int elem;
 
-        if(act == destino){ n++;}
-    
+        if(act == destino){ 
+            n++; 
+        }
+        
         else{
             while(itO != nodo.valor().cend()){ //iteramos sobre cada elemento de la lista
                 elem = itO.elem();
 
-                /*
-                cout << "nodo: " << act;
+                /*cout << "nodo: " << act;
                 cout << " elemIt: " << elem;
                 cout << endl;
                 */
-                                
                 if(elem != origen && !visitado[act] && ant != elem){
                     visitado[act] = true;
-
-                    lista.pon_final(elem, itO.peso());
-                    recorreLista(act, origen, elem, destino, lista, visitado, n);
+                    d.pon_final(act,0);
+                    recorreLista(act, origen, elem, destino, visitado, n);
                     for(int i = 0; i < _nNodos; i++) visitado[i] = false; //reiniciamos flags
                 }
 
@@ -93,11 +94,22 @@ using namespace std;
     }
 
     template<>
-    void Grafo<int>::muestraCaminos(const int &origen, const int &destino, Lista<int> &lista, bool visitado[]) const{
-
+    void Grafo<int>::muestraCaminos(const int &origen, const int &destino) {
         int n = 0;
-        recorreLista(origen, origen, origen, destino, lista, visitado, n);
-        cout << "caminos: " << n << endl;        
+        bool visitado[_nNodos];
+        Lista<int> lista;
+        for(int i = 0; i < _nNodos; i++) visitado[i] = false; //reiniciamos flags
+
+        recorreLista(origen, origen, origen, destino, visitado, n);
+        cout << "Caminos encontrados: " << n << endl;
+        cout << "lista: ";
+
+        for(int i = 0; i < d.longitud(); i++){
+            cout << d.primero();
+            d.quita_ppio();
+        }
+
+        cout << endl;
     }
 
     template<>

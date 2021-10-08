@@ -203,6 +203,10 @@ public:
 		bool operator==(const ConstIterator &other) const {
 			return _act == other._act;
 		}
+
+		bool operator=(const ConstIterator &other) const {
+			return other._act;
+		}
 		
 		bool operator!=(const ConstIterator &other) const {
 			return !(this->operator==(other));

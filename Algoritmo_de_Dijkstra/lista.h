@@ -402,7 +402,7 @@ public:
 			if (_act == NULL) throw EAccesoInvalido();
 			return _act->_elem;
 		}
-		const T &peso() const {
+		const int &peso() const {
 			if (_act == NULL) throw EAccesoInvalido();
 			return _act->_peso;
 		}
@@ -470,13 +470,13 @@ public:
 	 @param elem Valor del elemento a insertar.
 	 @param it Punto en el que insertar el elemento.
 	 */
-	void insertar(const T &elem, const Iterator &it) {
+	void insertar(const T &elem, const Iterator &it, int peso) {
 		if (_prim == it._act) 
-			pon_ppio(elem);
+			pon_ppio(elem, peso);
 		else if (it._act == NULL) 
-			pon_final(elem);
+			pon_final(elem, peso);
 		else {  
-			insertaElem(elem, it._act->_ant, it._act);
+			insertaElem(elem, peso,it._act->_ant, it._act);
 			_numElems++;
 		}
 	}

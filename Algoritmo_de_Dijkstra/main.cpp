@@ -1,26 +1,3 @@
-/*
-    Para la implementación de la representación del grafo
-    se han utilizado las estructuras de datos "Diccionario
-    Hash" y "lista" proporcionados por los profesores de la
-    asignatura Estructuras de Datos como base para la imple-
-    mentación de este grafo.
-
-    El grafo se representa mediante listas de adyacencia, de
-    modo que:
-
-    [nodo] -> [nodo, peso] -> ... ->
-
-    Los nodos y el peso deben de ser de tipo entero.
-
-
-    Entrada de prueba:
-        - 1 1 1 2 1 3 1 4 2 1 2 3 2 1 3 4 2 2 4 2 2 3 4 1
-
-            1 ····· 2
-            ·       ·
-            ·       ·
-            3 ····· 4
-*/
 #include "grafo.h"
 #include <iostream>
 using namespace std;
@@ -43,8 +20,6 @@ int main(){
         
         if(opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5 && opcion != 6) cout << "Opción no válida" << endl;
         else{
-            string dummy;
-            bool visitado[g.numNodos()];
             int origen, destino;
             
             switch(opcion){
@@ -111,9 +86,7 @@ int main(){
                     cout << "> BUSCAR TODOS LOS CAMINOS DE ORIGEN A DESTINO " << endl;
                     cout << "> Introduce origen y destino separados por un espacio:" << endl;
                     cin >> origen >> destino;
-                   
-                    for(int i = 0; i < g.numNodos(); i++) visitado[i] = false;
-                    
+                    cout << endl;
                     g.muestraCaminos(origen, destino);
                     cout << "----------------------------------" << endl;
                     break;
@@ -121,7 +94,7 @@ int main(){
                     cout << "> BUSCAR EL CAMINO MAS CORTO DE ORIGEN A DESTINO " << endl;
                     cout << "> Introduce origen y destino separados por un espacio:" << endl;
                     cin >> origen >> destino;
-
+                    cout << endl;
                     g.dijkstra(origen, destino);
                     cout << "----------------------------------" << endl;
                     break;

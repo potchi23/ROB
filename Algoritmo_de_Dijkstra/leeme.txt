@@ -1,0 +1,68 @@
+Hecho por: Richard Junior Mercado Correa
+
+Para la implementación de la representación del grafo
+se han utilizado las estructuras de datos "Diccionario
+Hash" y "lista" proporcionados por los profesores de la
+asignatura Estructuras de Datos como base para la imple-
+mentación de este grafo.
+
+El grafo se representa mediante listas de adyacencia, de
+modo que:
+
+    [nodo] -> [nodo, peso] -> ... ->
+
+Los nodos y el peso deben de ser de tipo entero.
+
+Notas: 
+    - Suponemos que el peso máximo es 100000 (para poder 
+      representar el infinito en el algoritmo de Dijkstra)
+      
+----------------------------------------------------------------
+
+INSTRUCCIONES: 
+
+1. Insertar nodo
+2. Insertar arista
+3. Representar grafo
+4. Mostrar todos los caminos de origen a destino
+5. Mostrar el camino más corto de origen a destino
+0. Salir
+
+----------------------------------------------------------------
+*Salir antes generar cada caso de prueba para no duplicar los enlaces
+
+Entradas de prueba para generar los grafos (copiar y pegar la secuencia):
+    - 1 1 1 2 1 3 1 4 2 1 2 5 2 1 3 4 2 2 4 2 2 3 4 1 4 1 4 -> muestra todos los caminos
+    - 1 1 1 2 1 3 1 4 2 1 2 5 2 1 3 4 2 2 4 2 2 3 4 1 5 1 4 -> muestra el camino mas corto
+
+              5
+        [1] ····· [2]
+         ·         · 
+       4 ·         · 2
+         ·         ·
+        [3] ····· [4]
+              1
+
+    - 1 1 1 2 1 3 1 4 2 1 2 5 2 1 3 4 2 2 4 2 2 3 4 1 2 1 4 6 4 1 4 -> muestra todos los caminos
+    - 1 1 1 2 1 3 1 4 2 1 2 5 2 1 3 4 2 2 4 2 2 3 4 1 2 1 4 6 5 1 4 -> muestra el camino mas corto
+
+              5
+        [1] ····· [2]
+         · ·       · 
+       4 ·   · 6   · 2
+         ·     ·   ·
+        [3] ····· [4]
+              1
+
+    - 1 1 1 2 1 3 1 4 1 5 2 1 2 6 2 1 4 1 2 4 5 1 2 2 5 2 2 2 4 2 2 2 3 5 2 5 3 6 4 1 3 -> muestra todos los caminos
+    - 1 1 1 2 1 3 1 4 1 5 2 1 2 6 2 1 4 1 2 4 5 1 2 2 5 2 2 2 4 2 2 2 3 5 2 5 3 6 5 1 3 -> muestra el camino mas corto
+
+              6             5
+        [1] ····· [2] ·······
+         ·       · ·        ·
+       1 ·   2 ·   ·2      [3]
+         ·   ·     ·        ·    
+         · ·       ·        ·
+        [4] ····· [5] ·······
+              1             6
+

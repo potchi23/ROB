@@ -15,6 +15,14 @@ class Grafo{
 
     private:
         /**
+         * Tabla para resolver el algoritmo de Dijkstra
+         */
+        typedef struct{
+            int distanciaMasCorta; //distancia más corta hasta origen
+            T nodoAnterior; //vértice anterior
+        } tablaDijkstra;
+
+        /**
          * Cada clave del diccionario representa
          * un nodo del grafo.
          * 
@@ -23,9 +31,10 @@ class Grafo{
         DiccionarioHash<T, Lista<T>> nodos;
         unsigned int _nNodos;
         unsigned int _nAristas;
-        void recorreLista(const T &ant, const T &origen, const T &act, const T &destino, bool flags[], int &n);
-        
-        Lista<T> d;
+        void recorreLista(const T &origen, const T &destino, int peso, bool visitado[], Lista<T> lista, int &n);
+        void resuelveDijkstra(const T &origen, bool visitado[], DiccionarioHash<T, tablaDijkstra> &tabla, Lista<T> cola);
+        void muestraCaminoMasCorto(const T& origen, const T &destino, const DiccionarioHash<T, tablaDijkstra> &tabla, Lista<T> lista);
+        //Lista<Lista<int>> listaOrdenada;
 
     public: 
         Grafo(): _nNodos(0), _nAristas(0){};
@@ -35,7 +44,7 @@ class Grafo{
         void representa() const;
         unsigned int numNodos() const;
         void muestraCaminos(const T &origen, const T&destino);
-        void dijkstra(const T &origen, const T&destino) const;
+        void dijkstra(const T &origen, const T&destino);
 };
 
 
